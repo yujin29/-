@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT 채팅 애플리케이션</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='gpt_style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>GPT 채팅 애플리케이션</h1>
+        <div id="chat-box">
+            <ul id="messages"></ul>
+        </div>
+        <input type="text" id="user-input" placeholder="메시지를 입력하세요..." autofocus>
+        <button id="send-button">보내기</button>
+        <button id="clear-button">초기화</button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#send-button').click(function() {
+                sendMessage();
+            });
+
+            $('#clear-button').click(function() {
+                clearChat();
+            });
+
+            $('#user-input').keypress(function(e) {
+                if (e.which == 13) { // Enter 키가 눌렸을 때
+                    sendMessage();
+                }
+            });
+
+            function sendMessage() {
+                const userMessage = $('#user-input').val();
+                if (!userMessage) return;
+
+                $('#messages').append(`<li class="user-message">User: ${userMessage}</li>`);
+                $('#user-input').val('');
+
+                $.ajax({
+                    url: '/chat',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ message: userMessage }),
+                    success: function(data) {
+                        if (data.message) {
+                            $('#messages').append(`<li class="gpt-message">GPT: ${data.message}</li>`);
+                        } else if (data.error) {
+                            $('#messages').append(`<li class="error-message">Error: ${data.error}</li>`);
+                        }
+                    },
+                    error: function() {
+                        $('#messages').append(`<li class="error-message">Error: 요청 실패</li>`);
+                    }
+                });
+            }
+
+            function clearChat() {
+                $('#messages').empty();
+                $.post('/clear', function(data) {
+                    $('#messages').append(`<li>${data.message}</li>`);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
