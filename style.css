@@ -1,4 +1,21 @@
+/* 폰트 */
+@font-face {
+   font-family: "NEXON Lv1 Gothic OTF";
+   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff")
+      format("woff");
+   font-weight: normal;
+   font-style: normal;
+}
 
+/* 노말라이즈 */
+a{ 
+  text-decoration:none; 
+  color:inherit; 
+}
+body, ul, li{ 
+  margin:0; 
+  list-style:none; 
+  padding:0;}
 
 
 .screen {
@@ -49,10 +66,9 @@
   
   .screen .heading-with {
     position: absolute;
-    width: 1444px;
+    width: 100%;
     height: 424px;
     top: 2039px;
-    left: 238px;
     background-color: #f7f7f7;
   }
   
@@ -60,7 +76,7 @@
     width: 764px;
     position: relative;
     top: 120px;
-    left: 340px;
+    left: 550px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -448,25 +464,25 @@
   
   .screen .icon-2 {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     top: 2px;
     left: 2px;
   }
   
   .screen .icon-3 {
     position: absolute;
-    width: 18px;
-    height: 18px;
+    width: 40px;
+    height: 40px;
     top: 3px;
     left: 3px;
   }
   
   .screen .icon-4 {
     position: absolute;
-    width: 20px;
-    height: 14px;
-    top: 5px;
+    width: 40px;
+    height: 40px;
+    top: 3px;
     left: 2px;
   }
   
@@ -501,7 +517,6 @@
     left: 213px;
     position: absolute;
     top: 26px;
-    font-family: "NEXON Lv1 Gothic-Light", Helvetica;
     font-weight: 300;
     color: #000000;
     font-size: 16px;
@@ -514,7 +529,6 @@
     left: 107px;
     position: absolute;
     top: 26px;
-    font-family: "NEXON Lv1 Gothic-Light", Helvetica;
     font-weight: 300;
     color: #000000;
     font-size: 16px;
@@ -527,7 +541,6 @@
     left: 313px;
     position: absolute;
     top: 26px;
-    font-family: "NEXON Lv1 Gothic-Light", Helvetica;
     font-weight: 300;
     color: #000000;
     font-size: 16px;
@@ -540,7 +553,6 @@
     position: absolute;
     top: 28px;
     left: 400px;
-    font-family: "NEXON Lv1 Gothic-Light", Helvetica;
     font-weight: 300;
     color: #000000;
     font-size: 16px;
@@ -553,7 +565,6 @@
     position: absolute;
     top: 27px;
     left: 1837px;
-    font-family: "NEXON Lv1 Gothic-Light", Helvetica;
     font-weight: 300;
     color: #000000;
     font-size: 16px;
